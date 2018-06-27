@@ -1,4 +1,10 @@
-﻿using ColossalFramework.UI;
+﻿/* 
+ * Copyright(c) 2015 Alexander Dzhoganov
+ * 
+ * Licensed under the MIT
+ */
+
+using ColossalFramework.UI;
 using ICities;
 using UnityEngine;
 

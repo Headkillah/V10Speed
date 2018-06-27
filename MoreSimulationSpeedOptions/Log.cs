@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* 
+ * Copyright(c) 2015 Alexander Dzhoganov
+ * 
+ * Licensed under the MIT
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
