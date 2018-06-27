@@ -1,8 +1,10 @@
 ﻿/* 
  * Copyright(c) 2015 Alexander Dzhoganov
+ * Copyright(c) 2018 Thomas Rohloff <v10lator@myway.de>
  * 
  * Licensed under the MIT
  */
+
 using System;
 using System.Reflection;
 using ColossalFramework.UI;
@@ -130,19 +132,20 @@ namespace MoreSimulationSpeedOptions
             };
         }
 
+		int oldSpeed = -1;
         void Update()
         {
-            var speed = Util.GetFieldValue<int>(simulationSpeedField, SimulationManager.instance);
+            int speed = Util.GetFieldValue<int>(simulationSpeedField, SimulationManager.instance);
+			if (speed == oldSpeed)
+				return;
+			
             speedButton.text = "x" + speed.ToString();
             speedButton.transformPosition = speedBar.transformPosition;
             speedButton.transform.position = speedBar.transform.position;
 
             if (speed == 3)
-            {
                 Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 4);
-            }
-
-            if (speed > 3)
+            else if (speed > 3)
             {
                 speedButton.textColor = red;
                 speedButton.focusedTextColor = red;
@@ -154,6 +157,7 @@ namespace MoreSimulationSpeedOptions
                 speedButton.focusedTextColor = white;
                 speedButton.hoveredTextColor = white;
             }
+			oldSpeed = speed;
         }
 
     }

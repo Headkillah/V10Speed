@@ -1,4 +1,11 @@
-﻿using System.Reflection;
+﻿/* 
+ * Copyright(c) 2015 Alexander Dzhoganov
+ * Copyright(c) 2018 Thomas Rohloff <v10lator@myway.de>
+ * 
+ * Licensed under the MIT
+ */
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 // General Information about an assembly is controlled through the following 
