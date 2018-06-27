@@ -16,12 +16,12 @@ namespace MoreSimulationSpeedOptions
 
         public string Name
         {
-            get { return "MoreSimulationSpeedOptions"; }
+            get { return "V10Speed"; }
         }
 
         public string Description
         {
-            get { return "What it says on the box"; }
+            get { return "More speed options"; }
         }
 
     }
