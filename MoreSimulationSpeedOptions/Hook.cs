@@ -6,7 +6,6 @@
  */
 
 using System;
-using System.Reflection;
 using ColossalFramework.UI;
 using UnityEngine;
 
@@ -14,8 +13,6 @@ namespace MoreSimulationSpeedOptions
 {
     public class Hook : MonoBehaviour
     {
-        private FieldInfo simulationSpeedField;
-
         private UIButton speedButton;
         private UIMultiStateButton speedBar;
 
@@ -30,8 +27,6 @@ namespace MoreSimulationSpeedOptions
 
         void Awake()
         {
-            simulationSpeedField = Util.FindField(SimulationManager.instance, "m_simulationSpeed");
-                
             var multiStateButtons = GameObject.FindObjectsOfType<UIMultiStateButton>();
             foreach (var button in multiStateButtons)
             {
@@ -78,64 +73,66 @@ namespace MoreSimulationSpeedOptions
             // Respond to button click.
             speedButton.eventMouseDown += (component, param) =>
             {
-                var speed = Util.GetFieldValue<int>(simulationSpeedField, SimulationManager.instance);
+				int speed = SimulationManager.instance.SelectedSimulationSpeed;
 
                 if ((param.buttons & UIMouseButton.Left) != 0)
                 {
                     switch (speed)
                     {
                         case 1:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 2);
+                            speed = 2;
                             break;
                         case 2:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 4);
+                            speed =  4;
                             break;
                         case 4:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 6);
+                            speed = 6;
                             break;
                         case 6:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 9);
+                            speed = 9;
                             break;
                         case 9:
                         case 99:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 1);
+                            speed = 1;
                             break;
                     }
+					SimulationManager.instance.SelectedSimulationSpeed = speed;
                 }
                 else if ((param.buttons & UIMouseButton.Right) != 0)
                 {
                     switch (speed)
                     {
                         case 1:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 9);
+                            speed = 9;
                             break;
                         case 2:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 1);
+                            speed = 1;
                             break;
                         case 4:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 2);
+                            speed = 2;
                             break;
                         case 6:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 4);
+                            speed = 4;
                             break;
                         case 9:
+							speed = 6;
+							break;
                         case 99:
-                            Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 6);
+                            speed = 9;
                             break;
                     }
+					SimulationManager.instance.SelectedSimulationSpeed = speed;
                 }
 
                 if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 99);
-                }
+                    SimulationManager.instance.SelectedSimulationSpeed = 99;
             };
         }
 
 		int oldSpeed = -1;
         void Update()
         {
-            int speed = Util.GetFieldValue<int>(simulationSpeedField, SimulationManager.instance);
+            int speed = SimulationManager.instance.SelectedSimulationSpeed;
 			if (speed == oldSpeed)
 				return;
 			
@@ -144,7 +141,7 @@ namespace MoreSimulationSpeedOptions
             speedButton.transform.position = speedBar.transform.position;
 
             if (speed == 3)
-                Util.SetFieldValue(simulationSpeedField, SimulationManager.instance, 4);
+                SimulationManager.instance.SelectedSimulationSpeed = 4;
             else if (speed > 3)
             {
                 speedButton.textColor = red;
