@@ -29,8 +29,8 @@ namespace MoreSimulationSpeedOptions
 
         void Awake()
         {
-            var multiStateButtons = GameObject.FindObjectsOfType<UIMultiStateButton>();
-            foreach (var button in multiStateButtons)
+            UIMultiStateButton[] multiStateButtons = GameObject.FindObjectsOfType<UIMultiStateButton>();
+            foreach (UIMultiStateButton button in multiStateButtons)
             {
                 if (button.name == "Speed")
                 {
@@ -42,7 +42,7 @@ namespace MoreSimulationSpeedOptions
             speedBar.isVisible = false;
 
             // Create a GameObject with a ColossalFramework.UI.UIButton component.
-            var buttonObject = new GameObject("MoreSimulationSpeedOptionsButton", typeof(UIButton));
+            GameObject buttonObject = new GameObject("MoreSimulationSpeedOptionsButton", typeof(UIButton));
 
             // Make the buttonObject a child of the uiView.
             buttonObject.transform.parent = speedBar.transform.parent.transform;
