@@ -106,7 +106,7 @@ namespace MoreSimulationSpeedOptions
 			speedButton.transformPosition = speedBar.transformPosition;
 			speedButton.transform.position = speedBar.transform.position;
 
-            int speed = SimulationManager.instance.SelectedSimulationSpeed;
+            int speed = SimulationManager.instance.FinalSimulationSpeed;
 			if (speed == oldSpeed)
 				return;
 			
