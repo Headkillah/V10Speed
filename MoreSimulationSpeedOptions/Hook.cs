@@ -64,10 +64,10 @@ namespace MoreSimulationSpeedOptions
             speedButton.hoveredBgSprite = "ButtonMenuHovered";
             speedButton.focusedBgSprite = "ButtonMenu";
             speedButton.pressedBgSprite = "ButtonMenuPressed";
-            speedButton.textColor = new Color32(255, 255, 255, 255);
+            speedButton.textColor = white;
             speedButton.disabledTextColor = new Color32(7, 7, 7, 255);
-            speedButton.hoveredTextColor = new Color32(255, 255, 255, 255);
-            speedButton.focusedTextColor = new Color32(255, 255, 255, 255);
+            speedButton.hoveredTextColor = white;
+            speedButton.focusedTextColor = white;
             speedButton.pressedTextColor = new Color32(30, 30, 44, 255);
 
             // Place the button.
