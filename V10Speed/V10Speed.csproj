@@ -7,8 +7,8 @@
     <ProjectGuid>{231BA3EB-82C2-457D-9FB3-F9637B604D4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MoreSimulationSpeedOptions</RootNamespace>
-    <AssemblyName>MoreSimulationSpeedOptions</AssemblyName>
+    <RootNamespace>V10Speed</RootNamespace>
+    <AssemblyName>V10Speed</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -61,7 +61,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy MoreSimulationSpeedOptions.dll "C:\Program Files (x86)\Steam\steamapps\workshop\content\255710\412292157\"</PostBuildEvent>
+    <PostBuildEvent>copy V10Speed.dll "C:\Program Files (x86)\Steam\steamapps\workshop\content\255710\412292157\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
