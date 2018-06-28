@@ -77,58 +77,27 @@ namespace MoreSimulationSpeedOptions
             speedButton.eventMouseDown += (component, param) =>
             {
 				int speed = SimulationManager.instance.SelectedSimulationSpeed;
+				if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+				{
+					if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+						speed = 1;
+					else
+					{
+						speed = speed >> 1;
+						if (speed < 1)
+							speed = 1;
+					}
+				}
+				else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+					speed = 512;
+				else
+				{
+					speed = speed << 1;
+					if (speed > 512)
+						speed = 512;
+				}
 
-                if ((param.buttons & UIMouseButton.Left) != 0)
-                {
-                    switch (speed)
-                    {
-                        case 1:
-                            speed = 2;
-                            break;
-                        case 2:
-                            speed =  4;
-                            break;
-                        case 4:
-                            speed = 6;
-                            break;
-                        case 6:
-                            speed = 9;
-                            break;
-                        case 9:
-                        case 99:
-                            speed = 1;
-                            break;
-                    }
-					SimulationManager.instance.SelectedSimulationSpeed = speed;
-                }
-                else if ((param.buttons & UIMouseButton.Right) != 0)
-                {
-                    switch (speed)
-                    {
-                        case 1:
-                            speed = 9;
-                            break;
-                        case 2:
-                            speed = 1;
-                            break;
-                        case 4:
-                            speed = 2;
-                            break;
-                        case 6:
-                            speed = 4;
-                            break;
-                        case 9:
-							speed = 6;
-							break;
-                        case 99:
-                            speed = 9;
-                            break;
-                    }
-					SimulationManager.instance.SelectedSimulationSpeed = speed;
-                }
-
-                if (Input.GetKey(KeyCode.LeftControl))
-                    SimulationManager.instance.SelectedSimulationSpeed = 99;
+				SimulationManager.instance.SelectedSimulationSpeed = speed;
             };
         }
 
