@@ -19,6 +19,8 @@ namespace MoreSimulationSpeedOptions
         private Color32 white = new Color32(255, 255, 255, 255);
         private Color32 red = new Color32(255, 0, 0, 255);
 
+		private int oldSpeed;
+
         void OnDestroy()
         {
             speedBar.isVisible = true;
@@ -49,6 +51,7 @@ namespace MoreSimulationSpeedOptions
             speedButton = buttonObject.GetComponent<UIButton>();
 
             // Set the text to show on the button.
+			SimulationManager.instance.SelectedSimulationSpeed = oldSpeed = 1;
             speedButton.text = "x1";
 
             // Set the button dimensions.
@@ -129,31 +132,17 @@ namespace MoreSimulationSpeedOptions
             };
         }
 
-		int oldSpeed = -1;
-        void Update()
+		void Update()
         {
+			speedButton.transformPosition = speedBar.transformPosition;
+			speedButton.transform.position = speedBar.transform.position;
+
             int speed = SimulationManager.instance.SelectedSimulationSpeed;
 			if (speed == oldSpeed)
 				return;
 			
             speedButton.text = "x" + speed.ToString();
-            speedButton.transformPosition = speedBar.transformPosition;
-            speedButton.transform.position = speedBar.transform.position;
-
-            if (speed == 3)
-                SimulationManager.instance.SelectedSimulationSpeed = 4;
-            else if (speed > 3)
-            {
-                speedButton.textColor = red;
-                speedButton.focusedTextColor = red;
-                speedButton.hoveredTextColor = red;
-            }
-            else
-            {
-                speedButton.textColor = white;
-                speedButton.focusedTextColor = white;
-                speedButton.hoveredTextColor = white;
-            }
+			speedButton.textColor = speedButton.focusedTextColor = speedButton.hoveredTextColor = speed > 3 ? red : white;
 			oldSpeed = speed;
         }
 
