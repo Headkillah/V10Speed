@@ -16,7 +16,7 @@ namespace MoreSimulationSpeedOptions
 
         public string Name
         {
-            get { return "V10Speed"; }
+            get { return "V10Speed 0.1"; }
         }
 
         public string Description
