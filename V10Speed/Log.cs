@@ -1,5 +1,6 @@
 ﻿/* 
  * Copyright(c) 2015 Alexander Dzhoganov
+ * Copyright(c) 2018 Thomas Rohloff <v10lator@myway.de>
  * 
  * Licensed under the MIT
  */
@@ -8,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoreSimulationSpeedOptions
+namespace V10Speed
 {
     public static class Log
     {

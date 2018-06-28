@@ -9,7 +9,7 @@ using System;
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace MoreSimulationSpeedOptions
+namespace V10Speed
 {
     public class Hook : MonoBehaviour
     {

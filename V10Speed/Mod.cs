@@ -9,7 +9,7 @@ using ColossalFramework.UI;
 using ICities;
 using UnityEngine;
 
-namespace MoreSimulationSpeedOptions
+namespace V10Speed
 {
 
     public class Mod : IUserMod
